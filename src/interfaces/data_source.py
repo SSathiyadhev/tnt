@@ -8,14 +8,19 @@ from src.data.providers import PROVIDERS
 
 class DataSource:
 
-    def __init__(self):
+    def __init__(
+        self,
+        provider_name: str
+    ):
 
         self.providers = {
             provider.name: provider
             for provider in PROVIDERS
         }
 
-        self.provider = None
+        self.provider = self.providers[
+            provider_name
+        ]
 
     def get_available_providers(
         self
@@ -25,15 +30,6 @@ class DataSource:
             self.providers.keys()
         )
 
-    def select_provider(
-        self,
-        provider_name: str
-    ):
-
-        self.provider = self.providers[
-            provider_name
-        ]
-
     def get_data(
         self,
         symbol: str,
@@ -41,11 +37,6 @@ class DataSource:
         start: datetime,
         end: datetime
     ) -> list[MarketDataPoint]:
-
-        if self.provider is None:
-            raise RuntimeError(
-                "No data provider selected."
-            )
 
         return self.provider.get_data(
             symbol,
