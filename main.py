@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from interfaces.data_source import DataSource
-from data.providers.yahoo import YahooDataSource
-from data.timeframe import Timeframe, TimeUnit
+from src.interfaces.data_source import DataSource
+from src.data.providers.yahoo import YahooDataSource
+from src.data.timeframe import Timeframe, TimeUnit
 
 
 data_source = DataSource()

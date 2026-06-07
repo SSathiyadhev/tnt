@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from data.market_data_point import MarketDataPoint
-from data.timeframe import Timeframe
+from src.data.market_data_point import MarketDataPoint
+from src.data.timeframe import Timeframe
 
 
 class DataSource:
