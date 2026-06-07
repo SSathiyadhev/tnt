@@ -8,6 +8,8 @@ from src.data.timeframe import Timeframe
 
 class YahooDataSource:
 
+    name = "Yahoo"
+
     def get_data(
         self,
         symbol: str,

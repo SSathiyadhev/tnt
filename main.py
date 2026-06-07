@@ -1,14 +1,15 @@
 from datetime import datetime
 
 from src.interfaces.data_source import DataSource
-from src.data.providers.yahoo import YahooDataSource
 from src.data.timeframe import Timeframe, TimeUnit
 
 
 data_source = DataSource()
 
-data_source.set_provider(
-    YahooDataSource()
+print("Available providers:", data_source.get_available_providers())
+
+data_source.select_provider(
+    "Yahoo"
 )
 
 data = data_source.get_data(

@@ -3,17 +3,36 @@ from datetime import datetime
 from src.data.market_data_point import MarketDataPoint
 from src.data.timeframe import Timeframe
 
+from src.data.providers import PROVIDERS
+
 
 class DataSource:
 
     def __init__(self):
+
+        self.providers = {
+            provider.name: provider
+            for provider in PROVIDERS
+        }
+
         self.provider = None
 
-    def set_provider(
+    def get_available_providers(
+        self
+    ) -> list[str]:
+
+        return list(
+            self.providers.keys()
+        )
+
+    def select_provider(
         self,
-        provider
+        provider_name: str
     ):
-        self.provider = provider
+
+        self.provider = self.providers[
+            provider_name
+        ]
 
     def get_data(
         self,
